@@ -137,37 +137,20 @@ void cycleTimeReport(void) {
 
 /** MAIN **/
 
-void setup() {
-  Serial.begin(9600);
-
-  QUKEYS(
-    kaleidoscope::Qukey(0, 0, 2, ShiftToLayer(FN))      // MO(FN)/Tab
-  );
-
-  Kaleidoscope.setup();
-
-  MouseWrapper.speedLimit = 64;
-  MouseKeys.wheelDelay = 35;
-  MouseKeys.accelDelay = 35;
-
-  TapDance.time_out = 100;
-
-  Qukeys.setTimeout(200);
-  Qukeys.setReleaseDelay(20);
-
+void bootAnimation() {
   /* Boot led animation */
   for (byte i = 1; i < 4; i++) {
     ErgoDox.setStatusLED(i, true);
   }
 
-  for (int i = 255; i > 15; i--) {
+  for (int i = 255; i > 15; i -= 2) {
     for (byte l = 1; l < 4; l++) {
       ErgoDox.setStatusLEDBrightness(l, i);
     }
     delay(5);
   }
 
-  delay(1000);
+  delay(500);
 
   for (int i = 15; i > 0; i--) {
     for (byte l = 1; l < 4; l++) {
@@ -179,6 +162,29 @@ void setup() {
   for (byte i = 1; i < 4; i++) {
     ErgoDox.setStatusLED(i, false);
   }
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  QUKEYS(
+    kaleidoscope::Qukey(0, 0, 2, ShiftToLayer(FN))      // MO(FN)/Tab
+  );
+
+  Kaleidoscope.setup();
+
+  MouseKeys.speed = 2;
+  MouseWrapper.speedLimit = 64;
+  MouseKeys.wheelDelay = 35;
+  MouseKeys.accelDelay = 15;
+
+
+  TapDance.time_out = 100;
+
+  Qukeys.setTimeout(200);
+  Qukeys.setReleaseDelay(20);
+
+  bootAnimation();
 }
 
 void loop() {
