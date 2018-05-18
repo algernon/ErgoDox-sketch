@@ -178,6 +178,7 @@ void setup() {
   MouseKeys.wheelDelay = 35;
   MouseKeys.accelDelay = 15;
 
+  ErgoDox.debounce = 3;
 
   TapDance.time_out = 100;
 
