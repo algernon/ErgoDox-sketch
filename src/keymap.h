@@ -18,7 +18,7 @@
 
 #pragma once
 
-enum { DVORAK, HUN, NUMPAD, FN, APPSEL };
+#include "layers.h"
 
 enum {
   LPB,

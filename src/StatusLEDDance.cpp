@@ -17,6 +17,7 @@
  */
 
 #include "StatusLEDDance.h"
+#include "layers.h"
 
 namespace kaleidoscope {
 
@@ -31,6 +32,36 @@ void StatusLEDDance::setStatusLEDByModifier(uint8_t led, Key modifier) {
 
 EventHandlerResult StatusLEDDance::beforeReportingState() {
   if (disabled)
+    return EventHandlerResult::OK;
+
+  bool layerColor = false;
+
+  if (Layer.isOn(HUN)) {
+    ErgoDox.setStatusLED(2, true);
+    ErgoDox.setStatusLED(3, true);
+    layerColor = true;
+  }
+
+  if (Layer.isOn(FN)) {
+    ErgoDox.setStatusLED(1, true);
+    ErgoDox.setStatusLED(3, true);
+    layerColor = true;
+  }
+
+  if (Layer.isOn(NUMPAD)) {
+    ErgoDox.setStatusLED(1, true);
+    ErgoDox.setStatusLED(2, true);
+    layerColor = true;
+  }
+
+  if (Layer.isOn(APPSEL)) {
+    ErgoDox.setStatusLED(1, true);
+    ErgoDox.setStatusLED(2, true);
+    ErgoDox.setStatusLED(3, true);
+    layerColor = true;
+  }
+
+  if (layerColor)
     return EventHandlerResult::OK;
 
   setStatusLEDByModifier(1, Key_LeftShift);
