@@ -16,9 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "00-config.h"
+
 #include "Kaleidoscope.h"
 
+#if WITH_CYCLETIMEREPORT
 #include "Kaleidoscope-CycleTimeReport.h"
+#endif
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-HostOS.h"
 #include "Kaleidoscope/HostOS-select.h"
@@ -52,8 +56,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
   StatusLEDDance,
   Macros,
   Hungarian,
-  MouseKeys,
-  CycleTimeReport
+  MouseKeys
+#if WITH_CYCLETIMEREPORT
+  ,CycleTimeReport
+#endif
 );
 
 /* TapDance */
@@ -138,12 +144,14 @@ void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount,
   }
 }
 
+#if WITH_CYCLETIMEREPORT
 /* CycleTimeReport */
 
 void cycleTimeReport(void) {
   Serial.print(F("# average loop time: "));
   Serial.println(CycleTimeReport.average_loop_time);
 }
+#endif
 
 /* Symbolic Unicode Input */
 
