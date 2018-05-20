@@ -21,15 +21,17 @@
 #include <Kaleidoscope.h>
 
 namespace kaleidoscope {
-class ActiveModStatusLED : public kaleidoscope::Plugin {
+class StatusLEDDance : public kaleidoscope::Plugin {
  public:
-  ActiveModStatusLED() {}
+  StatusLEDDance() {}
 
   EventHandlerResult beforeReportingState();
+
+  static bool disabled;
 
  private:
   static void setStatusLEDByModifier(uint8_t led, Key modifier);
 };
 }
 
-extern kaleidoscope::ActiveModStatusLED ActiveModStatusLED;
+extern kaleidoscope::StatusLEDDance StatusLEDDance;

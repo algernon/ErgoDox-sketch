@@ -38,7 +38,7 @@
 
 #include "keymap.h"
 
-#include "ActiveModStatusLED.h"
+#include "StatusLEDDance.h"
 
 KALEIDOSCOPE_INIT_PLUGINS(
   HostOS,
@@ -49,7 +49,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   OneShot,
   Syster,
   EscapeOneShot,
-  ActiveModStatusLED,
+  StatusLEDDance,
   Macros,
   Hungarian,
   MouseKeys,
@@ -83,13 +83,23 @@ static void TD_TMUXPane(uint8_t tapCount, byte row, byte col, kaleidoscope::TapD
 void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount, kaleidoscope::TapDance::ActionType tapDanceAction) {
   switch (tapDanceIndex) {
   case RESET:
-    if (tapCount < 4) {
-      ErgoDox.setStatusLED(tapCount, true);
-    } else {
+    if (tapDanceAction == kaleidoscope::TapDance::Interrupt ||
+        tapDanceAction == kaleidoscope::TapDance::Timeout ||
+        tapCount >= 4) {
+      StatusLEDDance.disabled = false;
       ErgoDox.setStatusLED(1, false);
       ErgoDox.setStatusLED(2, false);
       ErgoDox.setStatusLED(3, false);
-      ErgoDox.resetDevice();
+
+      if (tapCount >= 4)
+        ErgoDox.resetDevice();
+
+      return;
+    }
+
+    if (tapCount < 4 && tapDanceAction != kaleidoscope::TapDance::Release) {
+      StatusLEDDance.disabled = true;
+      ErgoDox.setStatusLED(tapCount, true);
     }
     return;
 

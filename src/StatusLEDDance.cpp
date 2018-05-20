@@ -16,18 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ActiveModStatusLED.h"
+#include "StatusLEDDance.h"
 
 namespace kaleidoscope {
 
-void ActiveModStatusLED::setStatusLEDByModifier(uint8_t led, Key modifier) {
+bool StatusLEDDance::disabled;
+
+void StatusLEDDance::setStatusLEDByModifier(uint8_t led, Key modifier) {
   if (hid::isModifierKeyActive(modifier))
     ErgoDox.setStatusLED(led, true);
-  else if (hid::wasModifierKeyActive(modifier))
+  else
     ErgoDox.setStatusLED(led, false);
 }
 
-EventHandlerResult ActiveModStatusLED::beforeReportingState() {
+EventHandlerResult StatusLEDDance::beforeReportingState() {
+  if (disabled)
+    return EventHandlerResult::OK;
+
   setStatusLEDByModifier(1, Key_LeftShift);
   setStatusLEDByModifier(2, Key_LeftAlt);
   setStatusLEDByModifier(3, Key_LeftControl);
@@ -36,4 +41,4 @@ EventHandlerResult ActiveModStatusLED::beforeReportingState() {
 }
 }
 
-kaleidoscope::ActiveModStatusLED ActiveModStatusLED;
+kaleidoscope::StatusLEDDance StatusLEDDance;
