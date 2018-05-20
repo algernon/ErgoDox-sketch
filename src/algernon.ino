@@ -351,8 +351,30 @@ static const kaleidoscope::Leader::dictionary_t dictionary[] PROGMEM = LEADER_DI
 
 /** MAIN **/
 
-void bootAnimation() {
-  /* Boot led animation */
+void bootStartAnimation() {
+  ErgoDox.setStatusLED(1, false);
+  ErgoDox.setStatusLED(2, false);
+  ErgoDox.setStatusLED(3, false);
+  ErgoDox.setStatusLEDBrightness(1, 15);
+  ErgoDox.setStatusLEDBrightness(2, 15);
+  ErgoDox.setStatusLEDBrightness(3, 15);
+
+  ErgoDox.setStatusLED(1, true);
+  delay(50);
+  ErgoDox.setStatusLED(2, true);
+  delay(50);
+  ErgoDox.setStatusLED(3, true);
+  delay(50);
+
+  ErgoDox.setStatusLED(1, false);
+  delay(50);
+  ErgoDox.setStatusLED(2, false);
+  delay(50);
+  ErgoDox.setStatusLED(3, false);
+  delay(50);
+}
+
+void bootFinishedAnimation() {
   for (byte i = 1; i < 4; i++) {
     ErgoDox.setStatusLED(i, true);
   }
@@ -379,6 +401,8 @@ void bootAnimation() {
 }
 
 void setup() {
+  bootStartAnimation();
+
   Serial.begin(9600);
 
   QUKEYS(
@@ -401,7 +425,7 @@ void setup() {
 
   Leader.dictionary = dictionary;
 
-  bootAnimation();
+  bootFinishedAnimation();
 }
 
 void loop() {
