@@ -435,6 +435,8 @@ void setup() {
 
   Leader.dictionary = dictionary;
 
+  OneShot.time_out = 500;
+
   bootFinishedAnimation();
 }
 
