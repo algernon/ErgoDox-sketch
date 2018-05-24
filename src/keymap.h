@@ -143,7 +143,7 @@ KEYMAPS(
   [FN] = KEYMAP_STACKED
   (
       // left hand
-       XXX             ,Key_F9        ,Key_F7    ,Key_F5        ,Key_F3    ,Key_F1    ,XXX
+       XXX             ,Key_F9        ,Key_F7    ,Key_F5        ,Key_F3    ,Key_F1    ,LGUI(Key_L)
       ,XXX             ,MS(L)         ,MW(NW)    ,MM(Up)        ,MW(NE)    ,MS(Up)    ,MW(End)
       ,___             ,MS(R)         ,MM(L)     ,MM(Dn)        ,MM(R)     ,MS(Dn)
       ,XXX             ,XXX           ,MW(SW)    ,XXX           ,MW(SE)    ,XXX       ,MM(BtnL)
