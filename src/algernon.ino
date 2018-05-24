@@ -45,13 +45,13 @@
 
 KALEIDOSCOPE_INIT_PLUGINS(
   HostOS,
+  OneShot,
+  EscapeOneShot,
   Qukeys,
   Leader,
   Unicode,
   TapDance,
-  OneShot,
   Syster,
-  EscapeOneShot,
   StatusLEDDance,
   Macros,
   Hungarian,
