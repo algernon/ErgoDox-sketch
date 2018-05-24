@@ -1,0 +1,2 @@
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="1307" RUN+="/bin/sh -c 'echo enabled > /sys$env{DEVPATH}/../power/wakeup'"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="feed", ATTRS{idProduct}=="1307", SYMLINK+="ergodox", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0"
