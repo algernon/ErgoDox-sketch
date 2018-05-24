@@ -26,7 +26,6 @@
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-HostOS.h"
 #include "Kaleidoscope/HostOS-select.h"
-#include "Kaleidoscope-KeyLogger.h"
 #include "Kaleidoscope-Leader.h"
 #include "Kaleidoscope-LangPack-Hungarian.h"
 #include "Kaleidoscope-Macros.h"
