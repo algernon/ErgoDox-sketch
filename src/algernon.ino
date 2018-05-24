@@ -424,7 +424,8 @@ void setup() {
   Serial.begin(9600);
 
   QUKEYS(
-    kaleidoscope::Qukey(0, 0, 2, ShiftToLayer(FN))      // MO(FN)/Tab
+    kaleidoscope::Qukey(0, 0, 2, ShiftToLayer(FN)),      // MO(FN)/Tab
+    kaleidoscope::Qukey(0, 1, 5, ShiftToLayer(NUMPAD))   // MO(Numpad)/Esc
   );
 
   Kaleidoscope.setup();
