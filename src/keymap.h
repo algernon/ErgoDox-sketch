@@ -28,6 +28,7 @@ enum {
   TMUX,
   TMUXP,
   ARRW,
+  MNP,
 };
 
 enum {
@@ -60,7 +61,7 @@ KEYMAPS(
   [DVORAK] = KEYMAP_STACKED
   (
       // left hand
-       XXX             ,Key_LCB       ,Key_AT    ,Key_STAR      ,Key_DOLLR ,Key_CARET ,Key_F11
+       TD(MNP)         ,Key_LCB       ,Key_AT    ,Key_STAR      ,Key_DOLLR ,Key_CARET ,Key_F11
       ,Key_Backtick    ,Key_Quote     ,Key_Comma ,Key_Period    ,Key_P     ,Key_Y     ,TD(LPB)
       ,Key_Tab         ,Key_A         ,Key_O     ,Key_E         ,Key_U     ,Key_I
       ,Key_PlayPause   ,Key_Slash     ,Key_Q     ,Key_J         ,Key_K     ,Key_X     ,TD(TMUX)

@@ -140,6 +140,11 @@ void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount,
     return tapDanceActionKeys(tapCount, tapDanceAction,
                               LSHIFT(Key_Semicolon),
                               Key_Semicolon);
+
+  case MNP:
+    return tapDanceActionKeys(tapCount, tapDanceAction,
+                              Consumer_ScanNextTrack,
+                              Consumer_ScanPreviousTrack);
   }
 }
 
