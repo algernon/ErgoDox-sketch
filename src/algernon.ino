@@ -45,12 +45,12 @@
 
 KALEIDOSCOPE_INIT_PLUGINS(
   HostOS,
+  TapDance,
   OneShot,
   EscapeOneShot,
   Qukeys,
   Leader,
   Unicode,
-  TapDance,
   Syster,
   StatusLEDDance,
   Macros,
