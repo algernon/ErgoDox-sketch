@@ -79,7 +79,7 @@ KEYMAPS(
       ,Key_Backspace    ,OSM(LeftShift) ,Key_Esc
 
       // right hand
-      ,XXX             ,Key_PRCNT     ,Key_EXCLM ,Key_HASH ,Key_AND    ,Key_RCB       ,XXX
+      ,LALT(Key_F2)    ,Key_PRCNT     ,Key_EXCLM ,Key_HASH ,Key_AND    ,Key_RCB       ,XXX
       ,TD(RPB)         ,Key_F         ,Key_G     ,Key_C    ,Key_R      ,Key_L         ,Key_Backslash
                        ,Key_D         ,Key_H     ,Key_T    ,Key_N      ,Key_S         ,Key_Equals
       ,TD(TMUXP)       ,Key_B         ,Key_M     ,Key_W    ,Key_V      ,Key_Z         ,TD(RESET)
