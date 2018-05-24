@@ -371,6 +371,48 @@ static const kaleidoscope::Leader::dictionary_t dictionary[] PROGMEM = LEADER_DI
      [LEAD_GUI]             = {LEADER_SEQ(LEAD(0), Key_LeftGui), GUI},
      [LEAD_COMPOSE]         = {LEADER_SEQ(LEAD(0), Key_R), Compose});
 
+/** Macros **/
+
+const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
+  if (!keyToggledOn(keyState))
+    return MACRO_NONE;
+
+  switch (macroIndex) {
+  case APP_IM ... APP_SCL2:
+    Serial.print(F("appsel:"));
+    break;
+  }
+
+  switch (macroIndex) {
+  case APP_IM:
+    Serial.println(F("im"));
+    break;
+  case APP_EMCS:
+    Serial.println(F("emacs"));
+    break;
+  case APP_TERM:
+    Serial.println(F("terminal"));
+    break;
+  case APP_CHRM:
+    Serial.println(F("chrome"));
+    break;
+  case APP_MSIC:
+    Serial.println(F("music"));
+    break;
+  case APP_SOCL:
+    Serial.println(F("social"));
+    break;
+  case APP_PMGR:
+    Serial.println(F("pwmgr"));
+    break;
+  case APP_SCL2:
+    Serial.println(F("social2"));
+    break;
+  }
+
+  return MACRO_NONE;
+}
+
 /** MAIN **/
 
 void bootStartAnimation() {

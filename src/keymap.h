@@ -32,8 +32,15 @@ enum {
 };
 
 enum {
-  FX,
-  PLOVER,
+  // Application select keys
+  APP_IM,    // IM
+  APP_EMCS,  // Emacs
+  APP_TERM,  // Terminal
+  APP_CHRM,  // Chrome
+  APP_MSIC,  // Music
+  APP_SOCL,  // Social
+  APP_PMGR,  // Password manager
+  APP_SCL2,  // Social #2
 };
 
 #define Key_AT    LSHIFT(Key_2)
@@ -161,10 +168,10 @@ KEYMAPS(
   [APPSEL] = KEYMAP_STACKED
   (
       // left hand
-       XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
+       XXX             ,M(APP_MSIC)   ,M(APP_IM) ,M(APP_EMCS)   ,M(APP_TERM) ,M(APP_CHRM) ,XXX
+      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX         ,XXX         ,XXX
+      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX         ,XXX
+      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX         ,XXX         ,XXX
       ,XXX             ,XXX           ,XXX       ,XXX           ,XXX
 
                         ,XXX            ,XXX
@@ -172,11 +179,11 @@ KEYMAPS(
       ,XXX              ,___            ,___
 
       // right hand
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-                       ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX
+      ,XXX             ,M(APP_SOCL)   ,M(APP_PMGR) ,M(APP_SCL2) ,XXX        ,XXX           ,XXX
+      ,XXX             ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
+                       ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
+      ,XXX             ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
+      ,XXX             ,XXX           ,XXX         ,XXX         ,XXX
 
       ,XXX      ,XXX
       ,___
