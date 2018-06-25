@@ -130,9 +130,9 @@ KEYMAPS(
 
       // right hand
       ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,Key_1     ,Key_4    ,Key_7      ,XXX           ,XXX
-                       ,Key_0         ,Key_2     ,Key_5    ,Key_8      ,Key_Minus     ,XXX
-      ,Key_Underscore  ,Key_Period    ,Key_3     ,Key_6    ,Key_9      ,XXX           ,XXX
+      ,XXX             ,XXX           ,Key_1     ,Key_2    ,Key_3      ,XXX           ,XXX
+                       ,Key_0         ,Key_4     ,Key_5    ,Key_6      ,Key_Minus     ,XXX
+      ,Key_Underscore  ,Key_Period    ,Key_7     ,Key_8    ,Key_9      ,XXX           ,XXX
       ,XXX             ,XXX           ,XXX       ,XXX      ,XXX
 
       ,XXX      ,___
