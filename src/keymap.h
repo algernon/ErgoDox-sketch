@@ -108,7 +108,7 @@ KEYMAPS(
       ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
                        ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
       ,XXX             ,XXX           ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX
+                                      ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
 
       ,XXX      ,XXX
       ,___
@@ -133,7 +133,7 @@ KEYMAPS(
       ,XXX             ,XXX           ,Key_1     ,Key_2    ,Key_3      ,XXX           ,XXX
                        ,Key_0         ,Key_4     ,Key_5    ,Key_6      ,Key_Minus     ,XXX
       ,Key_Underscore  ,Key_Period    ,Key_7     ,Key_8    ,Key_9      ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX       ,XXX      ,XXX
+                                      ,XXX       ,XXX      ,XXX        ,XXX           ,XXX
 
       ,XXX      ,___
       ,XXX
@@ -158,7 +158,7 @@ KEYMAPS(
       ,XXX             ,XXX           ,Key_Home      ,Key_UpArrow   ,Key_End        ,XXX           ,XXX
                        ,XXX           ,Key_LeftArrow ,Key_DownArrow ,Key_RightArrow ,XXX           ,XXX
       ,XXX             ,XXX           ,XXX           ,XXX           ,XXX            ,XXX           ,XXX
-      ,MM(BtnR)        ,XXX           ,XXX           ,XXX           ,XXX
+                                      ,MM(BtnR)      ,XXX           ,XXX            ,XXX           ,XXX
 
       ,XXX      ,XXX
       ,___
@@ -183,7 +183,7 @@ KEYMAPS(
       ,XXX             ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
                        ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
       ,XXX             ,XXX           ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
-      ,XXX             ,XXX           ,XXX         ,XXX         ,XXX
+                                      ,XXX         ,XXX         ,XXX        ,XXX           ,XXX
 
       ,XXX      ,XXX
       ,___
