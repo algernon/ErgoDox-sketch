@@ -476,10 +476,8 @@ void setup() {
 
   Kaleidoscope.setup();
 
-  MouseKeys.speed = 2;
-  MouseWrapper.speedLimit = 64;
-  MouseKeys.wheelDelay = 35;
-  MouseKeys.accelDelay = 15;
+  MouseKeys.speed = 48;
+  MouseKeys.accelSpeed = 1;
 
   ErgoDox.debounce = 3;
 
