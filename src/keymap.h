@@ -68,11 +68,11 @@ KEYMAPS(
   [DVORAK] = KEYMAP_STACKED
   (
       // left hand
-       TD(MNP)         ,Key_LCB       ,Key_AT    ,Key_STAR      ,Key_DOLLR ,Key_CARET ,Key_F11
-      ,Key_Backtick    ,Key_Quote     ,Key_Comma ,Key_Period    ,Key_P     ,Key_Y     ,TD(LPB)
-      ,Key_Tab         ,Key_A         ,Key_O     ,Key_E         ,Key_U     ,Key_I
-      ,Key_PlayPause   ,Key_Slash     ,Key_Q     ,Key_J         ,Key_K     ,Key_X     ,TD(TMUX)
-      ,XXX             ,XXX           ,XXX       ,XXX           ,TD(COLON)
+       TD(MNP)         ,Key_LCB       ,Key_AT    ,Key_STAR         ,Key_DOLLR ,Key_CARET ,OSL(NUMPAD)
+      ,Key_Backtick    ,Key_Quote     ,Key_Comma ,Key_Period       ,Key_P     ,Key_Y     ,TD(LPB)
+      ,Key_Tab         ,Key_A         ,Key_O     ,Key_E            ,Key_U     ,Key_I
+      ,Key_PlayPause   ,Key_Slash     ,Key_Q     ,Key_J            ,Key_K     ,Key_X     ,TD(TMUX)
+      ,XXX             ,XXX           ,XXX       ,ShiftToLayer(FN) ,TD(COLON)
 
                         ,OSM(LeftAlt)   ,Key_LeftGui
                                         ,OSM(LeftControl)
@@ -83,11 +83,11 @@ KEYMAPS(
       ,TD(RPB)         ,Key_F         ,Key_G     ,Key_C    ,Key_R      ,Key_L         ,Key_Backslash
                        ,Key_D         ,Key_H     ,Key_T    ,Key_N      ,Key_S         ,Key_Equals
       ,TD(TMUXP)       ,Key_B         ,Key_M     ,Key_W    ,Key_V      ,Key_Z         ,TD(RESET)
-      ,Key_Minus       ,XXX           ,XXX       ,XXX      ,XXX
+                                      ,Key_Minus ,XXX      ,XXX        ,XXX           ,XXX
 
-      ,OSL(FN)  ,OSL(NUMPAD)
+      ,LEAD(0)  ,XXX
       ,OSL(HUN)
-      ,LEAD(0)  ,Key_Enter         ,Key_Space
+      ,OSL(FN)  ,Key_Enter         ,Key_Space
   ),
 
   [HUN] = KEYMAP_STACKED
@@ -118,7 +118,7 @@ KEYMAPS(
   [NUMPAD] = KEYMAP_STACKED
   (
       // left hand
-       XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
+       XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,___
       ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
       ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX
       ,XXX             ,XXX           ,XXX       ,XXX           ,XXX       ,XXX       ,XXX
@@ -147,7 +147,7 @@ KEYMAPS(
       ,XXX             ,MS(L)         ,MW(NW)    ,MM(Up)        ,MW(NE)    ,MS(Up)    ,MW(End)
       ,___             ,MS(R)         ,MM(L)     ,MM(Dn)        ,MM(R)     ,MS(Dn)
       ,XXX             ,XXX           ,MW(SW)    ,XXX           ,MW(SE)    ,XXX       ,MM(BtnL)
-      ,XXX             ,XXX           ,XXX       ,XXX           ,XXX
+      ,XXX             ,XXX           ,XXX       ,___           ,XXX
 
       ,XXX              ,Consumer_VolumeIncrement
                         ,Consumer_VolumeDecrement
@@ -155,14 +155,14 @@ KEYMAPS(
 
       // right hand
       ,LGUI(Key_L)     ,Key_F10       ,Key_F2        ,Key_F4        ,Key_F6         ,Key_F8        ,XXX
-      ,XXX             ,XXX           ,Key_Home      ,Key_UpArrow   ,Key_End        ,XXX           ,XXX
-                       ,XXX           ,Key_LeftArrow ,Key_DownArrow ,Key_RightArrow ,XXX           ,XXX
+      ,XXX             ,Key_PageUp    ,Key_Home      ,Key_UpArrow   ,Key_End        ,XXX           ,XXX
+                       ,Key_PageDown  ,Key_LeftArrow ,Key_DownArrow ,Key_RightArrow ,XXX           ,XXX
       ,XXX             ,XXX           ,XXX           ,XXX           ,XXX            ,XXX           ,XXX
                                       ,MM(BtnR)      ,XXX           ,XXX            ,XXX           ,XXX
 
       ,XXX      ,XXX
-      ,___
-      ,XXX      ,Key_PageUp ,Key_PageDown
+      ,XXX
+      ,___      ,Key_PageUp ,Key_PageDown
   ),
 
   [APPSEL] = KEYMAP_STACKED

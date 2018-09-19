@@ -31,7 +31,6 @@
 #include "Kaleidoscope-Macros.h"
 #include "Kaleidoscope-MouseKeys.h"
 #include "Kaleidoscope-OneShot.h"
-#include "Kaleidoscope-Qukeys.h"
 #include "Kaleidoscope-Steno.h"
 #include "Kaleidoscope-Syster.h"
 #include "Kaleidoscope-TapDance.h"
@@ -48,7 +47,6 @@ KALEIDOSCOPE_INIT_PLUGINS(
   TapDance,
   OneShot,
   EscapeOneShot,
-  Qukeys,
   Leader,
   Unicode,
   Syster,
@@ -469,11 +467,6 @@ void setup() {
 
   Serial.begin(9600);
 
-  QUKEYS(
-    kaleidoscope::Qukey(0, 0, 2, ShiftToLayer(FN)),      // MO(FN)/Tab
-    kaleidoscope::Qukey(0, 1, 5, ShiftToLayer(NUMPAD))   // MO(Numpad)/Esc
-  );
-
   Kaleidoscope.setup();
 
   MouseKeys.speed = 48;
@@ -482,9 +475,6 @@ void setup() {
   ErgoDox.debounce = 3;
 
   TapDance.time_out = 100;
-
-  Qukeys.setTimeout(200);
-  Qukeys.setReleaseDelay(20);
 
   Leader.dictionary = dictionary;
 
