@@ -23,9 +23,9 @@
 #if WITH_CYCLETIMEREPORT
 #include "Kaleidoscope-CycleTimeReport.h"
 #endif
+#include "Kaleidoscope-EEPROM-Settings.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-HostOS.h"
-#include "Kaleidoscope/HostOS-select.h"
 #include "Kaleidoscope-Leader.h"
 #include "Kaleidoscope-LangPack-Hungarian.h"
 #include "Kaleidoscope-Macros.h"
@@ -36,13 +36,12 @@
 #include "Kaleidoscope-TapDance.h"
 #include "Kaleidoscope-Unicode.h"
 
-#include "MouseWrapper.h"
-
 #include "keymap.h"
 
 #include "StatusLEDDance.h"
 
 KALEIDOSCOPE_INIT_PLUGINS(
+  EEPROMSettings,
   HostOS,
   TapDance,
   OneShot,
