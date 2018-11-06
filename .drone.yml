@@ -1,0 +1,38 @@
+pipeline:
+  dco:
+    group: meta
+    image: algernon/drone-plugin-dco
+
+  signature-check:
+    group: meta
+    image: algernon/drone-plugin-signature-check
+    keys: [ 10E65DC045EABEFCC5193A26AC1E90BAC433F68F ]
+    when:
+      event: tag
+
+  cache-restore:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - lib
+    volumes:
+      - /tmp/cache/ErgoDox-Sketch:/cache
+
+  bootstrap:
+    image: algernon/drone-language:arduino
+    commands:
+      - . ./.kaleidoscope-builder.conf && setup
+
+  cache-rebuild:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - lib
+    volumes:
+      - /tmp/cache/ErgoDox-Sketch:/cache
+
+  build:
+    group: test
+    image: algernon/drone-language:arduino
+    commands:
+      - make build
