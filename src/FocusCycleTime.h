@@ -18,4 +18,19 @@
 
 #pragma once
 
-#define WITH_CYCLETIMEREPORT 0
+#include <Kaleidoscope.h>
+
+namespace kaleidoscope {
+
+class FocusCycleTime : public Plugin {
+ public:
+  FocusCycleTime() {}
+
+  EventHandlerResult onFocusEvent(const char *command);
+
+  static uint32_t average_loop_time;
+};
+
+}
+
+extern kaleidoscope::FocusCycleTime FocusCycleTime;
