@@ -1,6 +1,6 @@
 /* -*- mode: c++ -*-
  * ErgoDox-Sketch -- algernon's ErgoDox EZ Sketch
- * Copyright (C) 2018  Gergely Nagy
+ * Copyright (C) 2018, 2019  Gergely Nagy
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 
 #include "Kaleidoscope-CycleTimeReport.h"
 #include "Kaleidoscope-EEPROM-Settings.h"
+#include "Kaleidoscope-EEPROM-Keymap.h"
 #include "Kaleidoscope-Escape-OneShot.h"
 #include "Kaleidoscope-FocusSerial.h"
 #include "Kaleidoscope-HostOS.h"
@@ -41,6 +42,7 @@
 KALEIDOSCOPE_INIT_PLUGINS(
   Focus,
   EEPROMSettings,
+  EEPROMKeymap,
   HostOS,
   TapDance,
   OneShot,
@@ -61,8 +63,8 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
 /* TapDance */
 
-static void TD_TMUX(uint8_t tapCount, byte row, byte col, kaleidoscope::TapDance::ActionType tapDanceAction) {
-  if (tapDanceAction != kaleidoscope::TapDance::Release)
+static void TD_TMUX(uint8_t tapCount, byte row, byte col, kaleidoscope::plugin::TapDance::ActionType tapDanceAction) {
+  if (tapDanceAction != kaleidoscope::plugin::TapDance::Release)
     return;
 
   if (tapCount == 1) {
@@ -72,8 +74,8 @@ static void TD_TMUX(uint8_t tapCount, byte row, byte col, kaleidoscope::TapDance
   }
 }
 
-static void TD_TMUXPane(uint8_t tapCount, byte row, byte col, kaleidoscope::TapDance::ActionType tapDanceAction) {
-  if (tapDanceAction != kaleidoscope::TapDance::Release)
+static void TD_TMUXPane(uint8_t tapCount, byte row, byte col, kaleidoscope::plugin::TapDance::ActionType tapDanceAction) {
+  if (tapDanceAction != kaleidoscope::plugin::TapDance::Release)
     return;
 
   if (tapCount == 1) {
@@ -83,11 +85,11 @@ static void TD_TMUXPane(uint8_t tapCount, byte row, byte col, kaleidoscope::TapD
   }
 }
 
-void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount, kaleidoscope::TapDance::ActionType tapDanceAction) {
+void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount, kaleidoscope::plugin::TapDance::ActionType tapDanceAction) {
   switch (tapDanceIndex) {
   case RESET:
-    if (tapDanceAction == kaleidoscope::TapDance::Interrupt ||
-        tapDanceAction == kaleidoscope::TapDance::Timeout ||
+    if (tapDanceAction == kaleidoscope::plugin::TapDance::Interrupt ||
+        tapDanceAction == kaleidoscope::plugin::TapDance::Timeout ||
         tapCount >= 4) {
       StatusLEDDance.disabled = false;
       ErgoDox.setStatusLED(1, false);
@@ -100,7 +102,7 @@ void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount,
       return;
     }
 
-    if (tapCount < 4 && tapDanceAction != kaleidoscope::TapDance::Release) {
+    if (tapCount < 4 && tapDanceAction != kaleidoscope::plugin::TapDance::Release) {
       StatusLEDDance.disabled = true;
       ErgoDox.setStatusLED(tapCount, true);
     }
@@ -117,7 +119,7 @@ void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount,
                                 Key_LeftBracket,
                                 Key_LeftParen);
     } else {
-      if (tapDanceAction == kaleidoscope::TapDance::Release)
+      if (tapDanceAction == kaleidoscope::plugin::TapDance::Release)
         return Unicode.type(0x300c);
       return;
     }
@@ -128,7 +130,7 @@ void tapDanceAction(uint8_t tapDanceIndex, byte row, byte col, uint8_t tapCount,
                                 Key_RightBracket,
                                 Key_RightParen);
     } else {
-      if (tapDanceAction == kaleidoscope::TapDance::Release)
+      if (tapDanceAction == kaleidoscope::plugin::TapDance::Release)
         return Unicode.type(0x300d);
       return;
     }
@@ -218,18 +220,18 @@ void SymUnI_input(const char *symbol) {
     typeString(symbol);
 }
 
-void systerAction(kaleidoscope::Syster::action_t action, const char *symbol) {
+void systerAction(kaleidoscope::plugin::Syster::action_t action, const char *symbol) {
   switch (action) {
-  case kaleidoscope::Syster::StartAction:
+  case kaleidoscope::plugin::Syster::StartAction:
     Unicode.type(0x2328);
     break;
-  case kaleidoscope::Syster::EndAction:
+  case kaleidoscope::plugin::Syster::EndAction:
     handleKeyswitchEvent(Key_Backspace, 255, 255, IS_PRESSED | INJECTED);
     kaleidoscope::hid::sendKeyboardReport();
     handleKeyswitchEvent(Key_Backspace, 255, 255, WAS_PRESSED | INJECTED);
     kaleidoscope::hid::sendKeyboardReport();
     break;
-  case kaleidoscope::Syster::SymbolAction:
+  case kaleidoscope::plugin::Syster::SymbolAction:
     SymUnI_input(symbol);
     break;
   }
@@ -348,7 +350,7 @@ static void Gergo(uint8_t seqIndex) {
   }, UNKNOWN_KEYSWITCH_LOCATION, IS_PRESSED | INJECTED);
 }
 
-static const kaleidoscope::Leader::dictionary_t dictionary[] PROGMEM = LEADER_DICT
+static const kaleidoscope::plugin::Leader::dictionary_t dictionary[] PROGMEM = LEADER_DICT
     ([LEAD_UNICODE_UCIS]   = {LEADER_SEQ(LEAD(0), Key_U), startUCIS},
 
      [LEAD_CSILLA]          = {LEADER_SEQ(LEAD(0), Key_C), Csilla},
@@ -473,6 +475,8 @@ void setup() {
   OneShot.time_out = 500;
 
   bootFinishedAnimation();
+
+  EEPROMKeymap.setup(5);
 }
 
 void loop() {

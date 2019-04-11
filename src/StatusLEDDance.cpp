@@ -36,25 +36,25 @@ EventHandlerResult StatusLEDDance::beforeReportingState() {
 
   bool layerColor = false;
 
-  if (Layer.isOn(HUN)) {
+  if (Layer.isActive(HUN)) {
     ErgoDox.setStatusLED(2, true);
     ErgoDox.setStatusLED(3, true);
     layerColor = true;
   }
 
-  if (Layer.isOn(FN)) {
+  if (Layer.isActive(FN)) {
     ErgoDox.setStatusLED(1, true);
     ErgoDox.setStatusLED(3, true);
     layerColor = true;
   }
 
-  if (Layer.isOn(NUMPAD)) {
+  if (Layer.isActive(NUMPAD)) {
     ErgoDox.setStatusLED(1, true);
     ErgoDox.setStatusLED(2, true);
     layerColor = true;
   }
 
-  if (Layer.isOn(APPSEL)) {
+  if (Layer.isActive(APPSEL)) {
     ErgoDox.setStatusLED(1, true);
     ErgoDox.setStatusLED(2, true);
     ErgoDox.setStatusLED(3, true);
